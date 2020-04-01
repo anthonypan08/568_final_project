@@ -1,7 +1,7 @@
 
 # SuMaEM: Efficient LiDAR-based Semantic SLAM with EM ICP
 
-This repository is based on the implementation of SuMa++, which generates semantic maps only using three-dimensional laser range scans.
+This repository is based on the implementation of [SuMa++](https://github.com/PRBonn/semantic_suma), which generates semantic maps only using three-dimensional laser range scans.
 
 We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative Closest Point through Expectation-Maximization
 
