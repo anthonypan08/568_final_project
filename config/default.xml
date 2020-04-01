@@ -82,5 +82,5 @@
 <param name="use_filtered_vertexmap" type="boolean">false</param>
 <param name="weighting_scheme" type="integer">0</param>
 <!-- rangenet -->
-<param name="model_path" type="string">/path/to/rangenet/model</param>
+<param name="model_path" type="string">/home/jianing/catkin_ws/src/semantic_suma-master/darknet53/</param>
 </config>

@@ -61,6 +61,7 @@ class VisualizerWindow : public QMainWindow {
   void initializeGraph();
 
   void savePoses();
+  void evalPoses();
 
  protected:
   void updatePlaybackControls();

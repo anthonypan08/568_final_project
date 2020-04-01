@@ -174,6 +174,7 @@ VisualizerWindow::VisualizerWindow(int argc, char** argv) {
   connect(ui_.chkFilterVertices, SIGNAL(toggled(bool)), this, SLOT(triggerPreprocessing()));
 
   connect(ui_.actionSavePoses, SIGNAL(triggered()), this, SLOT(savePoses()));
+  connect(ui_.actionEvalPoses, SIGNAL(triggered()), this, SLOT(evalPoses()));
 
   connect(ui_.chkBilateralFiltering, SIGNAL(toggled(bool)), this, SLOT(triggerPreprocessing()));
   connect(ui_.chkFilterVertices, SIGNAL(toggled(bool)), this, SLOT(triggerPreprocessing()));
@@ -888,4 +889,14 @@ void VisualizerWindow::savePoses() {
     out_runtime.close();
     std::cout << "Saved runtime." << std::endl;
   }
+}
+
+void VisualizerWindow::evalPoses() {
+  QString open_path = "/";
+  QString gtValue =
+    QFileDialog::getExistingDirectory(this, "Select GT file", open_path);
+  QString poseValue =
+    QFileDialog::getExistingDirectory(this, "Select pose file", open_path);
+  KITTI::Odometry::eval(gtValue.toStdString(), poseValue.toStdString());
+  std::cout << "Eval Done!" << std::endl;
 }

@@ -24,11 +24,13 @@ Frame2Model::Frame2Model(const rv::ParameterList& params)
   std::vector<vec2> img_coords;
   img_coords.reserve(width * height);
   for (uint32_t i = 0; i < width; i += entriesPerKernel_) {
-    for (uint32_t j = 0; j < height; ++j) {
+    for (uint32_t j = 0; j < height; j += 1) {
       img_coords.push_back(vec2(i + 0.5f, j + 0.5f));
     }
   }
-
+  std::cout << "entriesPerKernel: " << entriesPerKernel_ << std::endl;
+  std::cout << "image_coords_num: " << img_coords.size() << std::endl;
+  
   vbo_img_coords_.assign(img_coords);
   vao_img_coords_.bind();
   vao_img_coords_.setVertexAttribute(0, vbo_img_coords_, 2, AttributeType::FLOAT, false, 2 * sizeof(float), nullptr);
@@ -225,6 +227,7 @@ double Frame2Model::jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf)
   inlier_residual_ = blending[45];
   inlier_ = valid - outlier_;
   invalid_ = blending[46];
+  std::cout << blending[47] << std::endl;
 
   glEnable(GL_DEPTH_TEST);
   sampler_.release(0);

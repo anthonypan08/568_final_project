@@ -1578,8 +1578,8 @@
      <string>&amp;File</string>
     </property>
     <addaction name="actionOpenLaserscan"/>
-    <addaction name="actionOpen_Poses"/>
     <addaction name="actionSavePoses"/>
+    <addaction name="actionEvalPoses"/>
    </widget>
    <addaction name="menu_File"/>
   </widget>
@@ -1596,6 +1596,8 @@
    </attribute>
    <addaction name="actionOpenLaserscan"/>
    <addaction name="actionRecord"/>
+   <addaction name="actionSavePoses"/>
+   <addaction name="actionEvalPoses"/>
   </widget>
   <action name="actionOpenLaserscan">
    <property name="text">
@@ -1610,14 +1612,14 @@
     <string>Record</string>
    </property>
   </action>
-  <action name="actionOpen_Poses">
-   <property name="text">
-    <string>Open Poses...</string>
-   </property>
-  </action>
   <action name="actionSavePoses">
    <property name="text">
     <string>Save Poses...</string>
+   </property>
+  </action>
+  <action name="actionEvalPoses">
+   <property name="text">
+    <string>Eval Poses...</string>
    </property>
   </action>
  </widget>

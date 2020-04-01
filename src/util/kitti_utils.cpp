@@ -274,7 +274,7 @@ void plotPathPlot(const std::string& dir, const std::vector<int32_t>& roi, int32
   std::string full_name = dir + "/" + file_name;
 
   // create png + eps
-  for (int32_t i = 0; i < 2; i++) {
+  for (int32_t i = 0; i < 1; i++) {
     // open file
     FILE* fp = fopen(full_name.c_str(), "w");
 
@@ -301,17 +301,17 @@ void plotPathPlot(const std::string& dir, const std::vector<int32_t>& roi, int32
     fclose(fp);
 
     // run gnuplot => create png + eps
-    sprintf(command, "cd %s; gnuplot %s", dir.c_str(), file_name);
-    if (!system(command)) exit(1);
+    // sprintf(command, "cd %s; gnuplot %s", dir.c_str(), file_name);
+    // if (!system(command)) exit(1);
   }
 
   // create pdf and crop
-  sprintf(command, "cd %s; ps2pdf %02d.eps %02d_large.pdf", dir.c_str(), idx, idx);
-  SAFE_COMMAND(command);
-  sprintf(command, "cd %s; pdfcrop %02d_large.pdf %02d.pdf", dir.c_str(), idx, idx);
-  SAFE_COMMAND(command);
-  sprintf(command, "cd %s; rm %02d_large.pdf", dir.c_str(), idx);
-  SAFE_COMMAND(command);
+  // sprintf(command, "cd %s; ps2pdf %02d.eps %02d_large.pdf", dir.c_str(), idx, idx);
+  // SAFE_COMMAND(command);
+  // sprintf(command, "cd %s; pdfcrop %02d_large.pdf %02d.pdf", dir.c_str(), idx, idx);
+  // SAFE_COMMAND(command);
+  // sprintf(command, "cd %s; rm %02d_large.pdf", dir.c_str(), idx);
+  // SAFE_COMMAND(command);
 }
 
 void saveErrorPlots(const std::vector<errors>& seq_err, const std::string& plot_error_dir, const std::string& prefix) {
@@ -411,7 +411,7 @@ void plotErrorPlots(const std::string& dir, char* prefix) {
     sprintf(full_name, "%s/%s", dir.c_str(), file_name);
 
     // create png + eps
-    for (int32_t j = 0; j < 2; j++) {
+    for (int32_t j = 0; j < 1; j++) {
       // open file
       FILE* fp = fopen(full_name, "w");
 
@@ -462,17 +462,17 @@ void plotErrorPlots(const std::string& dir, char* prefix) {
       fclose(fp);
 
       // run gnuplot => create png + eps
-      sprintf(command, "cd %s; gnuplot %s", dir.c_str(), file_name);
-      SAFE_COMMAND(command);
+      // sprintf(command, "cd %s; gnuplot %s", dir.c_str(), file_name);
+      // SAFE_COMMAND(command);
     }
 
     // create pdf and crop
-    sprintf(command, "cd %s; ps2pdf %s_%s.eps %s_%s_large.pdf", dir.c_str(), prefix, suffix, prefix, suffix);
-    SAFE_COMMAND(command);
-    sprintf(command, "cd %s; pdfcrop %s_%s_large.pdf %s_%s.pdf", dir.c_str(), prefix, suffix, prefix, suffix);
-    SAFE_COMMAND(command);
-    sprintf(command, "cd %s; rm %s_%s_large.pdf", dir.c_str(), prefix, suffix);
-    SAFE_COMMAND(command);
+    // sprintf(command, "cd %s; ps2pdf %s_%s.eps %s_%s_large.pdf", dir.c_str(), prefix, suffix, prefix, suffix);
+    // SAFE_COMMAND(command);
+    // sprintf(command, "cd %s; pdfcrop %s_%s_large.pdf %s_%s.pdf", dir.c_str(), prefix, suffix, prefix, suffix);
+    // SAFE_COMMAND(command);
+    // sprintf(command, "cd %s; rm %s_%s_large.pdf", dir.c_str(), prefix, suffix);
+    // SAFE_COMMAND(command);
   }
 }
 
@@ -520,7 +520,7 @@ bool eval(const std::string& gt_dir, const std::string& result_dir) {
   std::vector<errors> total_err;
 
   // for all sequences do
-  for (int32_t i = 11; i < 22; i++) {
+  for (int32_t i = 4; i < 5; i++) {
     // file name
     char file_name[256];
     sprintf(file_name, "%02d.txt", i);

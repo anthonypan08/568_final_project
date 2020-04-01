@@ -1,0 +1,10 @@
+darknet53/model.onnx
+darknet53/model.trt
+darknet53/segmentation_decoder
+darknet53/segmentation_head
+darknet53/backbone
+darknet53/arch_cfg.yaml
+darknet53/data_cfg.yaml
+darknet53/*
+src/.vscode/*
+bin/*

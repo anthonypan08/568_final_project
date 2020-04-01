@@ -16,7 +16,7 @@ int32_t LieGaussNewton::minimize(Objective& F, const Eigen::Matrix4d& T0) {
   initialize(F, T0);
 
   std::vector<uint32_t> maxIterations({maxIter, maxIter, maxIter, 3, 3, 3});
-
+  std::cout << "new frame" << std::endl;
   for (uint32_t i = 0; i <= F.getMaxLevel(); ++i) {
     F.setLevel(i);
     k_ = 0;
@@ -56,6 +56,8 @@ int32_t LieGaussNewton::step() {
   int32_t result = 1;
 
   double current_error = objective_->jacobianProducts(JtJ, Jtf);
+  //debug
+  // std::cout << objective_->inlier_residual() << std::endl;
 
   Eigen::VectorXd deltax = JtJ.ldlt().solve(-Jtf);  // new direction.
 
