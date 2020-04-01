@@ -1,17 +1,13 @@
-# SuMa++: Efficient LiDAR-based Semantic SLAM
 
-This repository contains the implementation of SuMa++, which generates semantic maps only using three-dimensional laser range scans.
+# SuMaEM: Efficient LiDAR-based Semantic SLAM with EM ICP
 
-Developed by [Xieyuanli Chen](http://www.ipb.uni-bonn.de/people/xieyuanli-chen/) and [Jens Behley](http://jbehley.github.io/projects/surfel_mapping/).
+This repository is based on the implementation of SuMa++, which generates semantic maps only using three-dimensional laser range scans.
 
-SuMa++ is built upon SuMa and RangeNet++. For more details, we refer to the original project websites [SuMa](https://github.com/jbehley/SuMa) and [RangeNet++](https://github.com/PRBonn/lidar-bonnetal).
+We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative Closest Point through Expectation-Maximization
 
-_An example of using SuMa++:_
-![ptcl](./.readme/demo.gif)
+## Related Publication
 
-## Publication
-
-If you use our implementation in your academic work, please cite the corresponding [paper](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf):  
+[paper](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf):  
     
 	@inproceedings{chen2019iros, 
 			author = {X. Chen and A. Milioto and E. Palazzolo and P. Giguère and J. Behley and C. Stachniss},
@@ -22,6 +18,15 @@ If you use our implementation in your academic work, please cite the correspondi
 			videourl = {https://youtu.be/uo3ZuLuFAzk},
 	}
 
+[paper](http://bmvc2018.org/contents/papers/1073.pdf):
+
+	@inproceedings{parkison2018semantic,
+			title={Semantic Iterative Closest Point through Expectation-Maximization.},
+			author={Parkison, Steven A and Gan, Lu and Jadidi, Maani Ghaffari and Eustice, Ryan M},
+			booktitle={BMVC},
+			pages={280},
+			year={2018}
+	}
 
 ##  Dependencies
 
@@ -44,10 +49,10 @@ sudo pip install catkin_tools catkin_tools_fetch empy
 
 ## Build
 #### rangenet_lib
-To use SuMa++, you need to first build the rangenet_lib with the TensorRT and C++ interface. 
+To use SuMaEM, you need to first build the rangenet_lib with the TensorRT and C++ interface. 
 For more details about building and using rangenet_lib you could find in [rangenet_lib](https://github.com/PRBonn/rangenet_lib).
 
-#### SuMa++
+#### SuMaEM
 Clone the repository in the `src` directory of the same catkin workspace where you built the rangenet_lib:
 ```bash
 git clone https://github.com/PRBonn/semantic_suma.git
@@ -85,22 +90,14 @@ OpenGL shading language version string: 4.50 NVIDIA
 
 ## How to run and use it?
 **Important Notice**
-- Before running SuMa++, you need to first build the [rangenet_lib](https://github.com/PRBonn/rangenet_lib) and download the pretrained [model](http://www.ipb.uni-bonn.de/html/projects/semantic_suma/darknet53.tar.gz).
+- Before running SuMaEM, you need to first build the [rangenet_lib](https://github.com/PRBonn/rangenet_lib) and download the pretrained [model](http://www.ipb.uni-bonn.de/html/projects/semantic_suma/darknet53.tar.gz).
 - You need to specify the model path in the configuration file in the `config/` folder.
-- For the first time using, rangenet_lib will take several minutes to build a `.trt` model for SuMa++.
-- SuMa++ now can only work with KITTI dataset.
+- For the first time using, rangenet_lib will take several minutes to build a `.trt` model for SuMaEM.
+- SuMaEM now can only work with KITTI dataset.
 
 All binaries are copied to the `bin` directory of the source folder of the project. Thus,
 1. run `visualizer` in the `bin` directory by `./visualizer`,
 2. open a Velodyne directory from the KITTI Visual Odometry Benchmark and select a ".bin" file,
 3. start the processing of the scans via the "play button" in the GUI.
-
-
-## License
-
-
-Copyright 2019, Xieyuanli Chen, Jens Behley, Cyrill Stachniss, Photogrammetry and Robotics Lab, University of Bonn.
-
-This project is free software made available under the MIT License. For details see the LICENSE file.
 
 
