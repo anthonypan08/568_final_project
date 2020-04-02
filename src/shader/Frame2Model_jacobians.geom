@@ -125,7 +125,7 @@ void main()
   //       confusion_product = 0;
   //     }else{
   //       for(int label_i = 0; label_i < 20; ++label_i){
-  //         confusion_product += c[data_label_back*20 + label_i] * c[model_label_back*20 + label_i];
+  //         confusion_product += c[data_label_back + label_i*20] * c[model_label_back + label_i*20];
   //       }
   //     }
   //   }
