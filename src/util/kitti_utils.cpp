@@ -515,7 +515,7 @@ bool eval(const std::string& gt_dir, const std::string& result_dir) {
   std::vector<errors> total_err;
   std::cout << "Processing: " << ", poses: " << "/" << std::endl;
   // for all sequences do
-  for (int32_t i = 4; i < 7; i++) {
+  for (int32_t i = 6; i < 7; i++) {
     // file name
     char file_name[256];
     sprintf(file_name, "%02d.txt", i);
