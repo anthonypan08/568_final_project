@@ -113,7 +113,6 @@ void main()
 
     if((e_m > 1.5f) && (e_d > 1.5f))
     {
-      confusion_product = 0;
       float data_label = texture(semantic_data, texCoords).x * 255.0;
       float data_label_prob = texture(semantic_data, texCoords).w;
       float model_label = texture(semantic_model, idx).x * 255.0;
@@ -121,7 +120,7 @@ void main()
       data_label_back = m[int(round(data_label))];
       model_label_back = m[int(round(model_label))];
       if(data_label_back == -1 || model_label_back == -1){
-        confusion_product = 0;
+        confusion_product += 0;
       }else{
         for(int label_i = 0; label_i < 20; ++label_i){
           confusion_product += c[label_i*20 + data_label_back] * c[label_i*20 + model_label_back];
@@ -219,7 +218,7 @@ void main()
 
       if(inlier)
       {
-        // weight *= confusion_product;
+        weight *= confusion_product;
         temp[0] += weight * n.x * n;
         temp[1] += weight * n.y * n;
         temp[2] += weight * n.z * n;

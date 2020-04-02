@@ -198,7 +198,11 @@ bool KITTIReader::read(uint32_t scan_idx, Laserscan& scan) {
       }
     }
   }
-
+  // for (uint32_t j = 0; j < 20; ++j){
+  //   std::cout << label_map_[j] << ',' ;
+  // }
+  // std::cout << std::endl;
+  
   return true;
 }
 }
