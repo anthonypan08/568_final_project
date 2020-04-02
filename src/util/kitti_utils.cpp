@@ -511,16 +511,11 @@ bool eval(const std::string& gt_dir, const std::string& result_dir) {
   std::string plot_path_dir = result_dir + "/plot_path";
   std::string plot_error_dir = result_dir + "/plot_error";
 
-  // create output directories
-  SAFE_COMMAND(("mkdir " + error_dir).c_str());
-  SAFE_COMMAND(("mkdir " + plot_path_dir).c_str());
-  SAFE_COMMAND(("mkdir " + plot_error_dir).c_str());
-
   // total errors
   std::vector<errors> total_err;
-
+  std::cout << "Processing: " << ", poses: " << "/" << std::endl;
   // for all sequences do
-  for (int32_t i = 4; i < 5; i++) {
+  for (int32_t i = 4; i < 7; i++) {
     // file name
     char file_name[256];
     sprintf(file_name, "%02d.txt", i);

@@ -88,48 +88,47 @@ void main()
   int data_label_back = 0;
   int model_label_back = 0;
 
-  // for(int e = 0; e < entries_per_kernel; ++e)
-  // {
-  //   vec2 texCoords = gs_in[0].texCoords + vec2(e, 0);
-  //   if(texCoords.x >= tex_dim.x || texCoords.y >= tex_dim.y) continue;
+  for(int e = 0; e < entries_per_kernel; ++e)
+  {
+    vec2 texCoords = gs_in[0].texCoords + vec2(e, 0);
+    if(texCoords.x >= tex_dim.x || texCoords.y >= tex_dim.y) continue;
 
-  //   vec2 img_coords = texCoords.xy / tex_dim;
+    vec2 img_coords = texCoords.xy / tex_dim;
 
-  //   float e_d = texture(vertex_data, texCoords).w + texture(normal_data, texCoords).w;
-  //   vec4 v_d = pose * vec4(texture(vertex_data, texCoords).xyz, 1.0);
-  //   vec4 n_d = pose * vec4(texture(normal_data, texCoords).xyz, 0.0); // assuming non-scaling transform
+    float e_d = texture(vertex_data, texCoords).w + texture(normal_data, texCoords).w;
+    vec4 v_d = pose * vec4(texture(vertex_data, texCoords).xyz, 1.0);
+    vec4 n_d = pose * vec4(texture(normal_data, texCoords).xyz, 0.0); // assuming non-scaling transform
 
-  //   bool inlier = false;
+    bool inlier = false;
 
-  //   vec2 idx = project2model(v_d);
-  //   if(idx.x < 0 || idx.x >= model_dim.x || idx.y < 0 || idx.y >= model_dim.y)
-  //   {
-  //     e_d = 0.0f;
-  //   }
+    vec2 idx = project2model(v_d);
+    if(idx.x < 0 || idx.x >= model_dim.x || idx.y < 0 || idx.y >= model_dim.y)
+    {
+      e_d = 0.0f;
+    }
 
-  //   float e_m = texture(vertex_model, idx).w + texture(normal_model, idx).w;
-  //   vec3 v_m = texture(vertex_model, idx).xyz;
-  //   vec3 n_m = texture(normal_model, idx).xyz;
+    float e_m = texture(vertex_model, idx).w + texture(normal_model, idx).w;
+    vec3 v_m = texture(vertex_model, idx).xyz;
+    vec3 n_m = texture(normal_model, idx).xyz;
 
-  //   // Reminder: use ifs instead of if(...) return; to avoid problemns with Intel cpu.
-  //   if((e_m > 1.5f) && (e_d > 1.5f))
-  //   {
-  //     confusion_product = 0;
-  //     float data_label = texture(semantic_data, texCoords).x * 255.0;
-  //     float data_label_prob = texture(semantic_data, texCoords).w;
-  //     float model_label = texture(semantic_model, idx).x * 255.0;
-  //     model_label_prob = texture(semantic_model, idx).w;
-  //     data_label_back = m[int(round(data_label))];
-  //     model_label_back = m[int(round(model_label))];
-  //     if(data_label_back == -1 || model_label_back == -1){
-  //       confusion_product = 0;
-  //     }else{
-  //       for(int label_i = 0; label_i < 20; ++label_i){
-  //         confusion_product += c[data_label_back*20 + label_i] * c[model_label_back*20 + label_i];
-  //       }
-  //     }
-  //   }
-  // }
+    if((e_m > 1.5f) && (e_d > 1.5f))
+    {
+      confusion_product = 0;
+      float data_label = texture(semantic_data, texCoords).x * 255.0;
+      float data_label_prob = texture(semantic_data, texCoords).w;
+      float model_label = texture(semantic_model, idx).x * 255.0;
+      model_label_prob = texture(semantic_model, idx).w;
+      data_label_back = m[int(round(data_label))];
+      model_label_back = m[int(round(model_label))];
+      if(data_label_back == -1 || model_label_back == -1){
+        confusion_product = 0;
+      }else{
+        for(int label_i = 0; label_i < 20; ++label_i){
+          confusion_product += c[label_i*20 + data_label_back] * c[label_i*20 + model_label_back];
+        }
+      }
+    }
+  }
 
   for(int e = 0; e < entries_per_kernel; ++e)
   {
@@ -199,14 +198,6 @@ void main()
       float model_label = texture(semantic_model, idx).x * 255.0;
       model_label_prob = texture(semantic_model, idx).w;
 
-      // float confusion_product;
-      // int data_label_back = m[int(data_label)];
-      // int model_label_back = m[int(model_label)];
-      // confusion_product = 0;
-      // for(int label_i = 0; label_i < 20; ++label_i){
-      //   confusion_product += c[data_label_back*20 + label_i] * c[model_label_back*20 + label_i];
-      // }
-
       if( model_label == car.w || model_label == bicycle.w ||
           model_label == bus.w || model_label == motorcycle.w||
           model_label == truck.w|| model_label == other_vehicle.w||
@@ -218,21 +209,6 @@ void main()
         else
           weight *= data_label_prob;
       }
-
-      // confusion_product = 0;
-      // float data_label = texture(semantic_data, texCoords).x * 255.0;
-      // float data_label_prob = texture(semantic_data, texCoords).w;
-      // float model_label = texture(semantic_model, idx).x * 255.0;
-      // model_label_prob = texture(semantic_model, idx).w;
-      // data_label_back = m[int(round(data_label))];
-      // model_label_back = m[int(round(model_label))];
-      // if(data_label_back == -1 || model_label_back == -1){
-      //   confusion_product = 0;
-      // }else{
-      //   for(int label_i = 0; label_i < 20; ++label_i){
-      //     confusion_product += c[data_label_back*20 + label_i] * c[model_label_back*20 + label_i];
-      //   }
-      // }
 
       // if(round(data_label) != round(model_label)){
       //   confusion_product = (1 - data_label_prob) * model_label_prob + data_label_prob * (1 - model_label_prob);
