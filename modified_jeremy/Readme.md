@@ -34,6 +34,9 @@ From line 160
     
 If the probability of potential statistic objects is higher than a threshold (0.8), we inrease the corresponding weight.
 
+
+
+
 **Comparison (dataset 00)**
 
 (folder 00 contain the output data, poses)
