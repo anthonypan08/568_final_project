@@ -167,18 +167,13 @@ void main()
       {
         if(round(data_label) != round(model_label))
           {
-            //if(data_label_prob>0.8)
-              //weight *= (1.5*data_label_prob);
-
 
           }
-           //weight *= (1 - data_label_prob);
         else
 	  {
-	    if(data_label_prob>0.8)
-              {weight *= (1.3*data_label_prob);}
+	    if(data_label_prob>0.8) //feel free to change constant, 0.8
+              {weight *= (1.3*data_label_prob);} // feel free to change the constant, 1.3
 		}
-           //weight *= data_label_prob;
       }
       // Jeremy
       
