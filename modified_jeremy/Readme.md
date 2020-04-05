@@ -23,14 +23,15 @@ From line 160
         if(round(data_label) != round(model_label))
           {
 
+
           }
         else
 	  {
-	    if(data_label_prob>0.8) //feel free to change constant, 0.8
-              {weight *= (1.3*data_label_prob);} // feel free to change the constant, 1.3
+	    if((model_label_prob>0.8) && (data_label_prob>0.8))
+              {weight *= (1+(0.3*data_label_prob));}
 		}
       }
-    // Jeremy
+      // Jeremy
     
 If the probability of potential statistic objects is higher than a threshold (0.8), we inrease the corresponding weight.
 
@@ -38,7 +39,7 @@ If the probability of potential statistic objects is higher than a threshold (0.
 
 
 **Comparison**
-
+ 
 Please select a folder to see the comparison.
 
 The name of the folder is the dataset used to evaluate.
