@@ -32,7 +32,7 @@ From line 160
       }
       // Jeremy
       
-If the probability of potential statistic objects is higher than a threshold (0.8), we inrease the corresponding weight.    
+Inrease the weight corresponding to minority of the potential statistic objects.    
 
 
 **Comparison**
