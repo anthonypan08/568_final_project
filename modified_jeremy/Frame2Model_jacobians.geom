@@ -168,20 +168,13 @@ void main()
       {
         if(round(data_label) != round(model_label))
           {
-            //if((model_label_prob>0.8) && (data_label_prob>0.8))
-              //weight *= (1.5*data_label_prob);
-
-
+            
           }
-           //weight *= (1 - data_label_prob);
         else
 	  {
 		weight *= (1+(data_label_prob*model_label_prob));
-	    //if((model_label_prob>0.8) && (data_label_prob>0.8))
-              //{weight *= (1+(0.3*data_label_prob*model_label_prob));}
-		//{weight *= ((1.3*data_label_prob));}
 		}
-           //weight *= data_label_prob;
+           
       }
       // Jeremy
       
