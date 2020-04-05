@@ -40,3 +40,14 @@ Inrease the weight corresponding to minority of the potential statistic objects.
 Please select a folder to see the comparison.
 
 The name of the folder is the dataset used to evaluate.
+
+
+Original path error (dataset 01)
+
+![Original error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/original/plot_error/01_ts.png)
+
+
+Modified path error (dataset 01)
+
+![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/jeremy/plot_error/01_ts.png)
+
