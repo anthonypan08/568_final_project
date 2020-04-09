@@ -4,18 +4,18 @@
 
 Original rotation error 
 
-![Original error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/original/plot_error/01_rs.png)
+![Original error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/original/plot_error/avg_rs.png)
 
 
 Modified rotation error 
 
-![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/jeremy/plot_error/01_rs.png)
+![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/jeremy/plot_error/avg_rs.png)
 
 Original translation error 
 
-![Original error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/original/plot_error/01_ts.png)
+![Original error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/original/plot_error/avg_ts.png)
 
 
 Modified translation error 
 
-![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/jeremy/plot_error/01_ts.png)
+![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/01/jeremy/plot_error/avg_ts.png)
