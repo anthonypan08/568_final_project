@@ -1,5 +1,15 @@
 
 **Comparison (dataset 00)**
+Original path 
+
+![Original error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/00/original/plot_path/00.png)
+
+
+Modified path  
+
+![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/00/jeremy/plot_path/00.png)
+
+
 
 
 Original rotation error 
