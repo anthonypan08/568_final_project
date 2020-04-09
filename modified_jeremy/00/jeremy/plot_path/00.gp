@@ -1,7 +1,7 @@
 set term png size 900,900
 set output "00.png"
 set size ratio -1
-set xrange [-302:320]
+set xrange [-303:320]
 set yrange [-81:541]
 set xlabel "x [m]"
 set ylabel "z [m]"
