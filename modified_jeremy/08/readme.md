@@ -18,4 +18,4 @@ Original translation error
 
 Modified translation error 
 
-![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/04/jeremy/plot_error/avg_tl.png)
+![Modified error](https://github.com/anthonypan08/568_final_project/blob/master/modified_jeremy/08/jeremy/plot_error/avg_tl.png)
