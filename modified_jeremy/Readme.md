@@ -32,7 +32,7 @@ From line 160
       }
       // Jeremy
       
-Inrease the weight corresponding to minority of the potential statistic objects.    
+Inrease the weight corresponding to minority of the potential non-moving objects.    
 
 
 **Comparison**
