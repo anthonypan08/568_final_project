@@ -13,6 +13,7 @@ please put **Frame2Model_jacobians.geom** it in **/semantic_suma/src/shader**
 From line 160
 
     // Jeremy
+      float model_label_prob = texture(semantic_model, idx).w;
       if( model_label == parking.w ||
           model_label == other_ground.w||
           model_label == building.w|| model_label == fence.w||
