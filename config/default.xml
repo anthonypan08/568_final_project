@@ -40,7 +40,7 @@
  Relocalization after track loss? (frame-2-frame tracking) 
 -->
 <param name="fallback_mode" type="boolean">true</param>
-<param name="fallback-max-distance" type="float">0.5</param>
+<param name="fallback-max-distance" type="float">1</param>
 <param name="fallback-max-angle" type="float">30.0</param>
 <param name="iterative_cutoff" type="boolean">false</param>
  <!--

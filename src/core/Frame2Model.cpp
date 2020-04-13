@@ -227,7 +227,7 @@ double Frame2Model::jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf)
   inlier_residual_ = blending[45];
   inlier_ = valid - outlier_;
   invalid_ = blending[46];
-  //std::cout << blending[47] << std::endl;
+  std::cout << "number of outlier: " << outlier_ << std::endl;
 
   glEnable(GL_DEPTH_TEST);
   sampler_.release(0);

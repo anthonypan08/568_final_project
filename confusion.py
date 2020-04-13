@@ -63,14 +63,15 @@ for i in range(20):
     a[:,i] = np.sum(confusion, axis = 1)
 a[0,:] = np.ones((1,20))
 confusion = confusion / a
+print(np.dot(confusion[:,1], confusion[:,1]))
 confusion = confusion.reshape(-1)
 i=0
-for item in confusion:
-    print("c["+str(i)+"]=", end='')
-    print(item, end='')
-    print("; ", end='')
-    i=i+1
-print('\n')
+# for item in confusion:
+#     print("c["+str(i)+"]=", end='')
+#     print(item, end='')
+#     print("; ", end='')
+#     i=i+1
+# print('\n')
 
 label_map = [[0,0], [10, 1], [11, 2], [15, 3], [18, 4], [20, 5], [30, 6], [31, 7], [32, 8], [40, 9], [44, 10], [48, 11], [49, 12], [50, 13], [51, 14], [70, 15], [71, 16], [72, 17], [80, 18], [81, 19]]
 vec = -np.ones((82,1))
@@ -79,9 +80,11 @@ for item in label_map:
 
 i=0
 vec = vec.reshape(-1)
-for item in vec:
-    print("m["+str(i)+"]=", end='')
-    print(int(item), end='')
-    print('; ', end='')
-    i=i+1
-print('\n')
+# for item in vec:
+#     print("m["+str(i)+"]=", end='')
+#     print(int(item), end='')
+#     print('; ', end='')
+#     i=i+1
+# print('\n')
+
+
