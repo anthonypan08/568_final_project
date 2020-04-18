@@ -47,7 +47,7 @@ class Frame2Model : public Objective {
   double residual(const Eigen::VectorXd& delta);
 
   /** \brief compute weighted JtJ and Jtf exploiting intermediate computations, return weighted objective F(x). */
-  double jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf);
+  double jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf,double& last_error);
 
  protected:
   /** \brief updatable parameters, i.e., params that can be changed at runtime. **/

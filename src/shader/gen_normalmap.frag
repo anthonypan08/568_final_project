@@ -66,7 +66,7 @@ void main()
     if(!valid(u) || !valid(v)) normal.w = 0;
 
     // floodfill erosion
-    int kernel_size = 5;
+    int kernel_size = 2;
     eroded_semantic_map = texture(semantic_map, pos);
 
     for(int offset = 1; offset < kernel_size; offset++)

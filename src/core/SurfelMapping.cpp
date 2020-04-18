@@ -280,8 +280,10 @@ void SurfelMapping::genResidualPlot() {
     map_->render_active(new_pose.cast<float>(), getConfidenceThreshold());
     objective_->setData(currentFrame_, map_->newMapFrame());
     objective_->initialize(Eigen::Matrix4d::Identity());
-
-    float residual_new = objective_->jacobianProducts(JtJ, Jtr);
+    double residual_new_j =10000.0;
+    float residual_new = objective_->jacobianProducts(JtJ, Jtr,residual_new_j);
+    double residual_old_j =10000.0;
+    double residual_map_j=10000.0;
 
     for (uint32_t i = 0; i < 100; ++i) {
       float interp = 2.0f * i / 100.0f - 0.5f;
@@ -294,7 +296,18 @@ void SurfelMapping::genResidualPlot() {
       map_->render_inactive(old_pose.cast<float>(), getConfidenceThreshold());
       objective_->setData(currentFrame_, map_->oldMapFrame());
       objective_->initialize(interp_pose);
-      float residual_old = objective_->jacobianProducts(JtJ, Jtr);
+
+      
+      float residual_old = objective_->jacobianProducts(JtJ, Jtr,residual_old_j);
+
+      if (i==0)
+      {
+      }
+      else
+      {
+        residual_old_j =residual_old;
+      }
+
       float outlier_old = objective_->outlier();
       float residual_inlier_old = objective_->inlier_residual();
       float inlier_old = objective_->inlier();
@@ -302,7 +315,16 @@ void SurfelMapping::genResidualPlot() {
       map_->render_composed(interp_pose.cast<float>(), new_pose.cast<float>(), getConfidenceThreshold());
       objective_->setData(currentFrame_, map_->composedFrame());
       objective_->initialize(Eigen::Matrix4d::Identity());
-      float residual_map = objective_->jacobianProducts(JtJ, Jtr);
+
+      float residual_map = objective_->jacobianProducts(JtJ, Jtr,residual_map_j);
+      if (i==0)
+      {
+      }
+      else
+      {
+        residual_map_j =residual_map;
+      }
+
       float outlier_map = objective_->outlier();
       float residual_inlier_map = objective_->inlier_residual();
       float inlier_map = objective_->inlier();
@@ -409,8 +431,8 @@ void SurfelMapping::updatePose() {
   }
 
   objective_->initialize(Eigen::Matrix4d::Identity());
-
-  double residual = objective_->jacobianProducts(JtJ_new, Jtr);
+  double residual_j=result_new_.error;
+  double residual = objective_->jacobianProducts(JtJ_new, Jtr,residual_j);
 
   statistics_["time_residual_new"] = Stopwatch::toc();
 
@@ -573,7 +595,8 @@ void SurfelMapping::checkLoopClosure() {
       objective_->setData(currentFrame_, map_->composedFrame());
       objective_->initialize(Eigen::Matrix4d::Identity());
 
-      float error = objective_->jacobianProducts(JtJ, Jtr);
+      double result_old_error_j=result_old_.error;
+      float error = objective_->jacobianProducts(JtJ, Jtr,result_old_error_j);
       float residual = error / float(objective_->inlier() + objective_->outlier());
 
       result_old_.error = error;  // gn_->residual();
@@ -701,7 +724,8 @@ void SurfelMapping::checkLoopClosure() {
         optimizationTime += 1000 * Stopwatch::toc();
 
         // float error =
-        objective_->jacobianProducts(JtJ, Jtr);
+        double error = 10000.0;
+        objective_->jacobianProducts(JtJ, Jtr,error);
 
         float valid_ratio = float(objective_->valid()) / float(objective_->valid() + objective_->invalid());
         float outlier_ratio = float(objective_->outlier()) / float(objective_->outlier() + objective_->inlier());
@@ -720,7 +744,8 @@ void SurfelMapping::checkLoopClosure() {
           objective_->setData(currentFrame_, map_->composedFrame());
           objective_->initialize(Eigen::Matrix4d::Identity());
 
-          float error = objective_->jacobianProducts(JtJ, Jtr);
+          double error = 10000.0;
+          error = objective_->jacobianProducts(JtJ, Jtr,error);
 
           float residual = error / float(objective_->inlier() + objective_->outlier());
           float outlier_ratio_old = float(objective_->outlier()) / float(objective_->outlier() + objective_->inlier());

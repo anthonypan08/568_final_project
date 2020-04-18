@@ -40,7 +40,7 @@
  Relocalization after track loss? (frame-2-frame tracking) 
 -->
 <param name="fallback_mode" type="boolean">true</param>
-<param name="fallback-max-distance" type="float">1</param>
+<param name="fallback-max-distance" type="float">0.5</param>
 <param name="fallback-max-angle" type="float">30.0</param>
 <param name="iterative_cutoff" type="boolean">false</param>
  <!--
@@ -82,5 +82,5 @@
 <param name="use_filtered_vertexmap" type="boolean">false</param>
 <param name="weighting_scheme" type="integer">0</param>
 <!-- rangenet -->
-<param name="model_path" type="string">/home/jianing/catkin_ws/src/semantic_suma-master/darknet53/</param>
+<param name="model_path" type="string">/home/j/darknet53/</param>
 </config>
