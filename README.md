@@ -3,11 +3,17 @@
 
 This repository is based on the implementation of [SuMa++](https://github.com/PRBonn/semantic_suma), which generates semantic maps only using three-dimensional laser range scans.
 
-We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative Closest Point through Expectation-Maximization
+We improve the original Semantic ICP with [correntropy](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1).
 
 ## Related Publication
 
-[paper](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf):  
+	
+[Precise Point Set Registration Using Point-to-Plane Distance and
+Correntropy for LiDAR Based Localization](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1)	
+
+[Variance estimation](https://www8.cs.umu.se/kurser/5DA001/HT07/lectures/lsq-handouts)
+
+[SuMa++](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf):  
     
 	@inproceedings{chen2019iros, 
 			author = {X. Chen and A. Milioto and E. Palazzolo and P. Giguère and J. Behley and C. Stachniss},
@@ -18,7 +24,7 @@ We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative 
 			videourl = {https://youtu.be/uo3ZuLuFAzk},
 	}
 
-[paper](http://bmvc2018.org/contents/papers/1073.pdf):
+[Semantic ICP](http://bmvc2018.org/contents/papers/1073.pdf):
 
 	@inproceedings{parkison2018semantic,
 			title={Semantic Iterative Closest Point through Expectation-Maximization.},
@@ -27,6 +33,7 @@ We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative 
 			pages={280},
 			year={2018}
 	}
+	
 
 ##  Dependencies
 
@@ -64,7 +71,7 @@ catkin deps fetch
 
 For the first setup of your workspace containing this project, you need:
   ```bash
-catkin build --save-config -i --cmake-args -DCMAKE_BUILD_TYPE=Release -DOPENGL_VERSION=430 -DENABLE_NVIDIA_EXT=YES
+catkin build  -i --cmake-args -DCMAKE_BUILD_TYPE=Release -DOPENGL_VERSION=450 -DENABLE_NVIDIA_EXT=YES
   ```
   
   Where you have to set `OPENGL_VERSION` to the supported OpenGL core profile version of your system, which you can query as follows:

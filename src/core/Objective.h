@@ -39,7 +39,7 @@ class Objective {
   virtual double residual(const Eigen::VectorXd& delta) = 0;
 
   /** \brief compute JtJ and Jtf exploiting intermediate computations at current pose, return F(x).  */
-  virtual double jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf) = 0;
+  virtual double jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf,double& last_error) = 0;
 
   /** \brief increment by given delta. **/
   void increment(const Eigen::VectorXd& delta) {

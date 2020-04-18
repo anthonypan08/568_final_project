@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include "core/lie_algebra.h"
-
+#include <math.h>  
 #include <exception>
 
 using namespace rv;
@@ -60,6 +60,9 @@ Frame2Model::Frame2Model(const rv::ParameterList& params)
   program_blend_.setUniform(GlUniform<int32_t>("semantic_data", 5));
   program_blend_.setUniform(GlUniform<Eigen::Matrix4f>("pose", Eigen::Matrix4f::Identity()));
   program_blend_.setUniform(GlUniform<int32_t>("entries_per_kernel", entriesPerKernel_));
+
+  //program_blend_.setUniform(GlUniform<float>("last_r",last_r));
+  
 
   updateParameters();
 }
@@ -135,7 +138,7 @@ double Frame2Model::residual(const Eigen::VectorXd& delta) {
   return -1;
 }
 
-double Frame2Model::jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf) {
+double Frame2Model::jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf,double& last_error) {
   assert(JtJ.rows() == 6 && JtJ.cols() == 6);
   assert(Jtf.rows() == 6 && Jtf.cols() == 1);
 
@@ -195,6 +198,7 @@ double Frame2Model::jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf)
 
   program_blend_.setUniform(GlUniform<Eigen::Matrix4f>("pose", pose_.cast<float>()));
   program_blend_.setUniform(GlUniform<int32_t>("iteration", iteration_));
+  program_blend_.setUniform(GlUniform<float>("last_error", last_error));
 
   glDrawArrays(GL_POINTS, 0, vbo_img_coords_.size());  // size depending on last's size.
   program_blend_.release();
@@ -227,7 +231,7 @@ double Frame2Model::jacobianProducts(Eigen::MatrixXd& JtJ, Eigen::MatrixXd& Jtf)
   inlier_residual_ = blending[45];
   inlier_ = valid - outlier_;
   invalid_ = blending[46];
-  std::cout << "number of outlier: " << outlier_ << std::endl;
+  //std::cout << blending[47] << std::endl;
 
   glEnable(GL_DEPTH_TEST);
   sampler_.release(0);

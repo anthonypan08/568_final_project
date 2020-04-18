@@ -37,7 +37,7 @@ void main()
   vec2 pos = texCoords * textureSize(semantic_map);
   refined_semantic_map = texture(semantic_map, pos);
 
-  int kernel_size = 5;
+  int kernel_size = 3;
 
   // floodfill
   {

@@ -1,6 +1,9 @@
 #include "core/LieGaussNewton.h"
 #include <rv/PrimitiveParameters.h>
 #include <rv/Stopwatch.h>
+#include <iostream>
+#include <algorithm>
+#include <math.h>
 
 using namespace rv;
 
@@ -50,15 +53,16 @@ void LieGaussNewton::initialize(Objective& F, const Eigen::Matrix4d& T0) {
   if (callback_ != 0) (*callback_)(last_error, Eigen::VectorXd::Zero(N), Tk_);  // t = 0
 }
 
+
+//jeremy
 int32_t LieGaussNewton::step() {
   assert(objective_ != nullptr);
 
   int32_t result = 1;
 
-  double current_error = objective_->jacobianProducts(JtJ, Jtf);
+  double current_error = objective_->jacobianProducts(JtJ, Jtf,last_error);
   //debug
   // std::cout << objective_->inlier_residual() << std::endl;
-
   Eigen::VectorXd deltax = JtJ.ldlt().solve(-Jtf);  // new direction.
 
   assert(!std::isnan(deltax[0]));
