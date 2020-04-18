@@ -64,7 +64,7 @@ catkin deps fetch
 
 For the first setup of your workspace containing this project, you need:
   ```bash
-catkin build --save-config -i --cmake-args -DCMAKE_BUILD_TYPE=Release -DOPENGL_VERSION=430 -DENABLE_NVIDIA_EXT=YES
+catkin build  -i --cmake-args -DCMAKE_BUILD_TYPE=Release -DOPENGL_VERSION=450 -DENABLE_NVIDIA_EXT=YES
   ```
   
   Where you have to set `OPENGL_VERSION` to the supported OpenGL core profile version of your system, which you can query as follows:
