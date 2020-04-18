@@ -125,7 +125,7 @@ void main()
 
         bool inlier = true;
 
-        if(length(v_m.xyz - v_d.xyz) > distance_thresh) inlier = false;
+        //if(length(v_m.xyz - v_d.xyz) > distance_thresh) inlier = false;
         if(dot(n_m.xyz, n_d.xyz) < angle_thresh) inlier = false;
 
         float residual = (dot(n_m.xyz, (v_d.xyz - v_m.xyz)));
@@ -138,10 +138,11 @@ void main()
         if((weight_function == 4 || weight_function == 1))
         {
           // huber weighting.
-          if(abs(residual) > factor)
-          {
-            weight = factor / abs(residual);
-          }
+          // if(abs(residual) > factor)
+          // {
+          //   weight *= factor / abs(residual);
+          // }
+          weight *= 1 / (1 + (residual/factor)*(residual/factor));
         }
         else if(weight_function == 2 && iteration > 0)
         {
@@ -194,7 +195,7 @@ void main()
 
         if(inlier)
         {
-          //weight *= confusion_product;
+          // weight *= confusion_product;
           // compute J^T * W * J
           temp[0] += weight * n.x * n;
           temp[1] += weight * n.y * n;
