@@ -113,13 +113,8 @@ void main()
 
       bool inlier = true;
 
-<<<<<<< HEAD
-        //if(length(v_m.xyz - v_d.xyz) > distance_thresh) inlier = false;
-        if(dot(n_m.xyz, n_d.xyz) < angle_thresh) inlier = false;
-=======
       if(length(v_m.xyz - v_d.xyz) > distance_thresh) inlier = false;
       if(dot(n_m.xyz, n_d.xyz) < angle_thresh) inlier = false;
->>>>>>> dc94a6106722d238bb64092d2851b540b837010b
 
       float residual = (dot(n_m.xyz, (v_d.xyz - v_m.xyz)));
       vec3 n = n_m;
@@ -132,16 +127,7 @@ void main()
         // huber weighting.
         if(abs(residual) > factor)
         {
-<<<<<<< HEAD
-          // huber weighting.
-          // if(abs(residual) > factor)
-          // {
-          //   weight *= factor / abs(residual);
-          // }
-          weight *= 1 / (1 + (residual/factor)*(residual/factor));
-=======
           weight = factor / abs(residual);
->>>>>>> dc94a6106722d238bb64092d2851b540b837010b
         }
       }
       else if(weight_function == 2 && iteration > 0)
@@ -186,21 +172,21 @@ void main()
           model_label == pole.w  || model_label == traffic_sign.w)
       {
         if(round(data_label) != round(model_label))
-          {
-          }
+        {
+        }
         else
-	  {
-		weight *= (1+(data_label_prob*model_label_prob));
-		}
+        {
+        weight *= (1+(data_label_prob*model_label_prob));
+        }
       }
       // Jeremy
       
       
       if(inlier)
-      {	
+      {  
 
-	      sigma=last_error* last_error/(entries_per_kernel-6);
-	      sigma=exp((n.x*pose[0][3]+n.y*pose[1][3]+n.z*pose[2][3]+cp.x*pose[2][1]+cp.y*pose[0][1]+cp.z*pose[1][0]-residual)*(n.x*pose[0][3]+n.y*pose[1][3]+n.z*pose[2][3]+cp.x*pose[2][1]+cp.y*pose[0][1]+cp.z*pose[1][0]-residual)/(-2*sigma));
+        sigma=last_error* last_error/(entries_per_kernel-6);
+        sigma=exp((n.x*pose[0][3]+n.y*pose[1][3]+n.z*pose[2][3]+cp.x*pose[2][1]+cp.y*pose[0][1]+cp.z*pose[1][0]-residual)*(n.x*pose[0][3]+n.y*pose[1][3]+n.z*pose[2][3]+cp.x*pose[2][1]+cp.y*pose[0][1]+cp.z*pose[1][0]-residual)/(-2*sigma));
 
         weight *= sigma;
         temp[0] += weight * n.x * n;
