@@ -27,6 +27,8 @@ We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative 
 			pages={280},
 			year={2018}
 	}
+	
+[paper](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1)	
 
 ##  Dependencies
 
