@@ -7,7 +7,7 @@ We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative 
 
 ## Related Publication
 
-[paper](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf):  
+[SuMa++](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf):  
     
 	@inproceedings{chen2019iros, 
 			author = {X. Chen and A. Milioto and E. Palazzolo and P. Giguère and J. Behley and C. Stachniss},
@@ -18,7 +18,7 @@ We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative 
 			videourl = {https://youtu.be/uo3ZuLuFAzk},
 	}
 
-[paper](http://bmvc2018.org/contents/papers/1073.pdf):
+[Semantic ICP](http://bmvc2018.org/contents/papers/1073.pdf):
 
 	@inproceedings{parkison2018semantic,
 			title={Semantic Iterative Closest Point through Expectation-Maximization.},
@@ -28,7 +28,8 @@ We replace the original Semantic ICP with EM Semantic ICP in Semantic Iterative 
 			year={2018}
 	}
 	
-[paper](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1)	
+[Precise Point Set Registration Using Point-to-Plane Distance and
+Correntropy for LiDAR Based Localization](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1)	
 
 ##  Dependencies
 
