@@ -31,6 +31,8 @@ We improve the original Semantic ICP with [correntropy](https://ieeexplore-ieee-
 [Precise Point Set Registration Using Point-to-Plane Distance and
 Correntropy for LiDAR Based Localization](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1)	
 
+[Variance estimation](https://www8.cs.umu.se/kurser/5DA001/HT07/lectures/lsq-handouts)
+
 ##  Dependencies
 
 * catkin
