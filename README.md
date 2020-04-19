@@ -7,6 +7,10 @@ We improve the original Semantic ICP with [correntropy](https://ieeexplore-ieee-
 
 ## Related Publication
 
+Comparison is in the folder compare.
+
+## Related Publication
+
 	
 [Precise Point Set Registration Using Point-to-Plane Distance and
 Correntropy for LiDAR Based Localization](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1)	
