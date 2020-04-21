@@ -8,7 +8,7 @@ We improve the original Semantic ICP with [correntropy](https://ieeexplore-ieee-
 _An example of using SuMa++:_
 
 
-![ptcl](./gif/demo.gif)
+![ptcl](./gif/demo.gif) ![ptcl](./gif/demo2.gif)
 ## Performance Comparison
 
 Comparison is in the folder compare.
