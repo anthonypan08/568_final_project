@@ -6,6 +6,8 @@ This repository is based on the implementation of [SuMa++](https://github.com/PR
 We improve the original Semantic ICP with [correntropy](https://ieeexplore-ieee-org.proxy.lib.umich.edu/stamp/stamp.jsp?tp=&arnumber=8500525&tag=1) and our heuristic idea.
 
 _An example of using SuMa++:_
+
+
 ![ptcl](./gif/demo.gif)
 ## Performance Comparison
 
